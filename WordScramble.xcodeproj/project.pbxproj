@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F947383B282887AD00F2E9A6 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = F947383A282887AD00F2E9A6 /* start.txt */; };
 		F97177832827550D0017E2A5 /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97177822827550D0017E2A5 /* WordScrambleApp.swift */; };
 		F97177852827550D0017E2A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97177842827550D0017E2A5 /* ContentView.swift */; };
 		F97177872827550E0017E2A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97177862827550E0017E2A5 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F947383A282887AD00F2E9A6 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 		F971777F2827550D0017E2A5 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97177822827550D0017E2A5 /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
 		F97177842827550D0017E2A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		F97177812827550D0017E2A5 /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
+				F947383A282887AD00F2E9A6 /* start.txt */,
 				F97177822827550D0017E2A5 /* WordScrambleApp.swift */,
 				F97177842827550D0017E2A5 /* ContentView.swift */,
 				F97177862827550E0017E2A5 /* Assets.xcassets */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F971778A2827550E0017E2A5 /* Preview Assets.xcassets in Resources */,
+				F947383B282887AD00F2E9A6 /* start.txt in Resources */,
 				F97177872827550E0017E2A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +284,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = personal.WordScramble;
+				PRODUCT_BUNDLE_IDENTIFIER = WordScramble.personal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -309,7 +313,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = personal.WordScramble;
+				PRODUCT_BUNDLE_IDENTIFIER = WordScramble.personal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
