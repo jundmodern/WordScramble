@@ -14,10 +14,16 @@ struct ContentView: View {
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
+    @State private var letterScore = 0
+    @State private var wordScore = 0
     
     var body: some View {
         NavigationView{
             List{
+                Section{
+                    Text("Letter score is: \(letterScore)")
+                    Text("Word score is: \(wordScore)")
+                }
                 Section{
                     TextField("Enter your word", text: $newWord)
                         .autocapitalization(.none)
@@ -40,9 +46,11 @@ struct ContentView: View {
             } message: {
                 Text(errorMessage)
             }
-            
+            .toolbar{
+                Button("Start game", action: startGame)
         }
     }
+}
     func wordError(title: String, message: String){
         errorTitle = title
         errorMessage = message
@@ -60,25 +68,51 @@ struct ContentView: View {
         //extra validation to come
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original")
+            newWord = ""
             return
         }
 
         guard isPossible(word: answer) else {
             wordError(title: "Word not possible", message: "You can't spell that word from '\(rootWord)'!")
+            newWord = ""
             return
         }
 
         guard isReal(word: answer) else {
             wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
+            newWord = ""
             return
         }
+        
+        guard isLong(word: answer) else{
+            wordError(title: "Word too short", message: "This word is less then 3 letters")
+            newWord = ""
+            return
+        }
+        guard isNotRoot(word: answer) else{
+            wordError(title: "That is not original", message: "That is the original word")
+            newWord = ""
+            return
+        }
+        
         
         withAnimation(){
             usedWords.insert(answer, at: 0)
         }
+        letterScore += newWord.count
+        wordScore += 1
         newWord = ""
     }
     func startGame(){
+        usedWords = [String]()
+        rootWord = ""
+        newWord = ""
+        errorTitle = ""
+        errorMessage = ""
+        showingError = false
+        letterScore = 0
+        wordScore = 0
+        
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt"){
            if let startWords = try? String(contentsOf: startWordsURL){
                 let allWords = startWords.components(separatedBy: "\n")
@@ -108,6 +142,20 @@ struct ContentView: View {
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         return misspelledRange.location == NSNotFound
+    }
+    func isLong(word: String) -> Bool{
+        if(word.count < 3){
+            return false
+        } else{
+            return true
+        }
+    }
+    func isNotRoot(word: String) -> Bool{
+        if(word == rootWord){
+            return false
+        } else{
+            return true
+        }
     }
 }
 
